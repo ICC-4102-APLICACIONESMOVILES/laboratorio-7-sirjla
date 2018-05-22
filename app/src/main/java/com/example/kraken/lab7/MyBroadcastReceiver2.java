@@ -24,6 +24,8 @@ public class MyBroadcastReceiver2 extends BroadcastReceiver {
     private AlarmManager alarmMgr;
     private PendingIntent alarmIntent;
 
+    private int notId = 0;
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -44,7 +46,8 @@ public class MyBroadcastReceiver2 extends BroadcastReceiver {
 
             NotificationManager mNotificationManager =
                     (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-            mNotificationManager.notify(9, mBuilder.build());
+            mNotificationManager.notify(notId, mBuilder.build());
+            notId++;
         }
     }
 }
